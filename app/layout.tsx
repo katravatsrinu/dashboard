@@ -1,8 +1,9 @@
+// app/layout.tsx
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from './theme-provider';
-import { AuthProvider } from '@/lib/auth-context'; // 👈 import the AuthProvider
+import { ThemeProvider } from './theme-provider'; // ✅ Custom theme provider
+import { AuthProvider } from '@/lib/auth-context';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,13 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AuthProvider> {/* 👈 Wrap with AuthProvider */}
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <AuthProvider>
             {children}
           </AuthProvider>
         </ThemeProvider>
