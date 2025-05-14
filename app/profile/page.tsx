@@ -1,11 +1,11 @@
 "use client";
 
-import { useAuth } from "@/lib/auth-context"; // Replace with actual context
+import { useAuth } from "@/lib/auth-context"; // Your custom context
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function ProfilePage() {
-  const { user, updateUser } = useAuth(); // Mocked or actual context
+  const { user, updateUser } = useAuth(); // Access the context
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ export default function ProfilePage() {
     setError("");
 
     try {
-      await updateUser({ name, email });
+      await updateUser({ name, email }); // Update user in context
       setMessage("✅ Profile updated successfully!");
     } catch (err) {
       setError("❌ Failed to update profile.");

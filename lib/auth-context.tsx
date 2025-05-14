@@ -1,31 +1,35 @@
 // lib/auth-context.tsx
+
 "use client";
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
 // Types
 interface User {
   name: string;
   email: string;
-  password: string;
+  avatar?: string;
+  password?: string; // optional
 }
+
 
 interface LoginUser {
   email: string;
   password: string;
 }
+interface RegisterUser {
+  name: string;
+  email: string;
+  password: string;
+}
+
 
 interface AuthContextType {
   user: User | null;
   login: (userData: LoginUser) => void;
   register: (userData: User) => void;
   logout: () => void;
+  updateUser: (updatedUserData: Partial<User>) => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -77,8 +81,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     router.push("/auth/login");
   };
 
+  const updateUser = (updatedUserData: Partial<User>) => {
+    if (user) {
+      const updatedUser = { ...user, ...updatedUserData };
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, register }}>
+    <AuthContext.Provider value={{ user, login, logout, register, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
