@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Cloud, LineChart, Newspaper } from "lucide-react";
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="border-b border-border">
@@ -19,7 +19,7 @@ export default function Home() {
           </Link>
         </div>
       </header>
-      
+
       <main className="flex-1">
         <section className="py-20 px-4">
           <div className="container mx-auto max-w-4xl text-center">
@@ -39,7 +39,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
+
         <section className="py-16 bg-muted">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
@@ -53,7 +53,7 @@ export default function Home() {
                   Real-time weather data, forecasts, and historical trends for locations worldwide.
                 </p>
               </div>
-              
+
               <div className="bg-card rounded-lg p-6 shadow-sm">
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <Newspaper className="h-6 w-6 text-primary" />
@@ -63,7 +63,7 @@ export default function Home() {
                   Stay updated with the latest news from various categories, all in one place.
                 </p>
               </div>
-              
+
               <div className="bg-card rounded-lg p-6 shadow-sm">
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <LineChart className="h-6 w-6 text-primary" />
@@ -77,7 +77,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      
+
       <footer className="border-t border-border py-6">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>© 2025 Analytics Dashboard. All rights reserved.</p>
